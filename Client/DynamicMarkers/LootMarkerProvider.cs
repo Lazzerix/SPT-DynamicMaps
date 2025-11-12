@@ -29,7 +29,7 @@ namespace DynamicMaps.DynamicMarkers
             {
                 if (item is not LootItem loot) continue;
                 
-                if (GameUtils.GetWishListItems().Contains(new MongoID(loot.TemplateId)))
+                if (ItemViewFactory.GetItemType(loot.Item.GetType())==EItemType.Keys||ItemViewFactory.GetItemType(loot.Item.GetType())==EItemType.Container||GameUtils.GetWishListItems().Contains(new MongoID(loot.TemplateId)))
                 {
                     TryAddMarker(loot);
                 }
@@ -70,6 +70,10 @@ namespace DynamicMaps.DynamicMarkers
             foreach (var item in _lootMarkers.Keys.ToList())
             {
                 TryRemoveMarker(item);
+                if (!item)
+                {
+                    continue;
+                }
                 TryAddMarker(item);
             }
         }
@@ -109,7 +113,7 @@ namespace DynamicMaps.DynamicMarkers
                 markerDef = new MapMarkerDef
                 {
                     Category = "Loot",
-                    Color = Settings.LootItemColor.Value,
+                    Color = (itemType is EItemType.Keys or EItemType.Container ? Settings.KeyItemColor.Value : Settings.LootItemColor.Value),
                     Sprite = EFTHardSettings.Instance.StaticIcons.ItemTypeSprites.GetValueOrDefault(itemType),
                     Position = MathUtils.ConvertToMapPosition(item.transform),
                     Text = item.Item.TemplateId.LocalizedName()

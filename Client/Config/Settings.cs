@@ -115,6 +115,7 @@ namespace DynamicMaps.Config
         public static ConfigEntry<Color> AirdropColor;
         public static ConfigEntry<Color> BackpackColor;
         public static ConfigEntry<Color> LootItemColor;
+        public static ConfigEntry<Color> KeyItemColor;
         public static ConfigEntry<Color> KilledCorpseColor;
         public static ConfigEntry<Color> KilledBossColor;
         public static ConfigEntry<Color> KilledOtherColor;
@@ -791,6 +792,15 @@ namespace DynamicMaps.Config
                 MarkerColors,
                 "Loot marker color",
                 new Color(0.98f, 0.81f, 0.007f),
+                new ConfigDescription(
+                    "Color of the marker",
+                    null,
+                    new ConfigurationManagerAttributes { })));
+            
+            ConfigEntries.Add(KeyItemColor = config.Bind(
+                MarkerColors,
+                "Key(card) marker color",
+                new Color(0.7f, 0, 0.6f),
                 new ConfigDescription(
                     "Color of the marker",
                     null,
