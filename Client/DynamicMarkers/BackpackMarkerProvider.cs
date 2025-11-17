@@ -100,7 +100,7 @@ namespace DynamicMaps.DynamicMarkers
 
         private void OnRegisterLoot(LootItem lootItem)
         {
-            if (lootItem is null || lootItem.Item is null)
+            if (!lootItem || lootItem.Item is null)
             {
                 return;
             }

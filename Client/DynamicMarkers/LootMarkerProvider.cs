@@ -134,7 +134,7 @@ namespace DynamicMaps.DynamicMarkers
 
         private void TryRemoveMarker(LootItem item)
         {
-            if (!_lootMarkers.ContainsKey(item)) return;
+            if (!_lootMarkers.ContainsKey(item)) return;// if lootMarkers doesn't contain the key
             
             _lootMarkers[item].ContainingMapView.RemoveMapMarker(_lootMarkers[item]);
             _lootMarkers.Remove(item);

@@ -49,7 +49,7 @@
     <!-- Creates a zip file -->
     <ItemGroup><FilesToDelete Include="$(SolutionDir)release\*.zip"/></ItemGroup><Delete Files="@(FilesToDelete)" /><!-- Remove old zip -->
     <Message Importance="high" Text="Deleting old zip at @(FilesToDelete)" />
-    <Message Importance="high" Text="Making new zip at $(SolutionDir)DynamicMaps-$(Version)-$(SourceRevisionId).zip" />
+    <Message Importance="high" Text="Making new zip at $(SolutionDir)release\DynamicMaps-$(Version)-$(SourceRevisionId).zip" />
     <ZipDirectory SourceDirectory="$(SolutionDir)release\" DestinationFile="$(SolutionDir)DynamicMaps-$(Version)-$(SourceRevisionId).zip" /><!-- Make new zip in different folder to prevent problems -->
     <Message Importance="high" Text="Moving zip to $(SolutionDir)release\" />
     <Move SourceFiles="$(SolutionDir)DynamicMaps-$(Version)-$(SourceRevisionId).zip" DestinationFolder="$(SolutionDir)release\" /><!-- Move new zip to release folder -->
